@@ -19,8 +19,20 @@ describe('hackaton test spec', () => {
     cy.window().then((window) => {
       item = window.localStorage.getItem('code');
       cy.log(item);
-    });
-    cy.get('body').click(50, 50);
+      cy.get('body').click(50, 50);
     cy.get('.ski-button').click()
+    cy.get('.ski-button').click()
+    cy.get('#numpad').click()
+    const digits=item.split('')
+    digits.forEach(digit => {
+      cy.wait(1000)
+      cy.get(`#${digit}`).click()});
+      cy.wait(1000)
+    });
+      cy.get('#enter').click()
+      cy.wait(4000)
+      cy.get('body').type('{upArrow}')
+      cy.get('body').type('{upArrow}')
   })
+  
 })

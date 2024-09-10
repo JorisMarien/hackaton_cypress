@@ -15,11 +15,12 @@ describe('hackaton test spec', () => {
     cy.wait(8000)
     cy.get('.ski-button').click()
     cy.get('img').click(200,195)
-    let code
-    cy.get('.murder').should(($murder) => {
-      code = $murder.text()
-      
-    })
-    cy.log(code)
+    let item
+    cy.window().then((window) => {
+      item = window.localStorage.getItem('code');
+      cy.log(item);
+    });
+    cy.get('body').click(50, 50);
+    cy.get('.ski-button').click()
   })
 })
